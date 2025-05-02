@@ -1,0 +1,5 @@
+1. Strace of ./a binary initially shows that it tries to open a file called ./pesho in read-only mode and fails with segmentation fault.
+2. Providing an empty file fixes the segmentation fault. The program tries to read the first 1024 bytes and exits successfully with no output.
+3. Providing a file "pesho" with the text "test" causes a malloc assertion error, indicating issues with memory management / validation.
+4. Providing file b as "pesho" causes the program to finish successfully. Based on the output, it appears to print the byte number and its signed char (1-byte) value each on separate line.
+5. Finally, running ./a through Valgrind reveals some additional problems related to variable initialization.

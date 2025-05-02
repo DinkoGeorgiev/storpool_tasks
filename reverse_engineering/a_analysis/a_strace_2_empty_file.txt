@@ -1,0 +1,15 @@
+strace -yy  ./a
+execve("./a", ["./a"], 0x7ffd53e9d5c8 /* 25 vars */) = 0
+brk(NULL)                               = 0x32052000
+brk(0x320531c0)                         = 0x320531c0
+arch_prctl(ARCH_SET_FS, 0x32052880)     = 0
+uname({sysname="Linux", nodename="lp-dgeorgiev2", ...}) = 0
+readlink("/proc/self/exe", "/home/deleteme/a", 4096) = 16
+brk(0x320741c0)                         = 0x320741c0
+brk(0x32075000)                         = 0x32075000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD</home/deleteme>, "./pesho", O_RDONLY) = 3</home/deleteme/pesho>
+read(3</home/deleteme/pesho>, "", 1024) = 0
+close(3</home/deleteme/pesho>)          = 0
+exit_group(0)                           = ?
++++ exited with 0 +++

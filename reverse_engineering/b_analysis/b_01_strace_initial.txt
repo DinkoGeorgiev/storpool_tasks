@@ -1,0 +1,12 @@
+execve("./b", ["./b"], 0x7ffe5c4237f8 /* 25 vars */) = 0
+uname({sysname="Linux", nodename="lp-dgeorgiev2", ...}) = 0
+brk(NULL)                               = 0x23258000
+brk(0x232591c0)                         = 0x232591c0
+arch_prctl(ARCH_SET_FS, 0x23258880)     = 0
+readlink("/proc/self/exe", "/home/deleteme/b", 4096) = 16
+brk(0x2327a1c0)                         = 0x2327a1c0
+brk(0x2327b000)                         = 0x2327b000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+--- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=NULL} ---
++++ killed by SIGSEGV (core dumped) +++
+Segmentation fault (core dumped)
