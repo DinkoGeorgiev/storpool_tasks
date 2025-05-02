@@ -1,0 +1,40 @@
+/usr/bin/time -v bash analysis/disk_models_counter.sh ~/Downloads/bigf.json.bz2
+Using pbzcat for decompression...
+
+0:05:51 [60.8MiB/s]
+"model":"HGST3T" 33337292
+"model":"SSDLP2" 33345174
+"model":"HGST2048T" 33332531
+"model":"RDV2" 33332954
+"model":"SSDDC1" 33327742
+"model":"broken" 33328584
+"model":"SSDF1" 33328579
+"model":"SCSI3HD" 33329611
+"model":"DSD07461" 33333959
+"model":"DRV1" 33338513
+"model":"123456789" 33327094
+"model":"MODEL" 1
+"model":"HGST8T" 33337967
+	Command being timed: "bash analysis/disk_models_counter.sh ~/Downloads/bigf.json.bz2"
+	User time (seconds): 1321.85
+	System time (seconds): 51.18
+	Percent of CPU this job got: 390%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:51.68
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 135284
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 44079
+	Voluntary context switches: 6239329
+	Involuntary context switches: 192444
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
