@@ -1,0 +1,40 @@
+name: Static code analysis
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+
+jobs:
+  Formatter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed py files
+        id: changed-files
+        run: echo "all_py_changes=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD | grep -E ".*\.py$" | xargs -r ls 2> /dev/null | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+          cache: pip
+      - run: pip install isort black pylint
+      - run: pip install -r requirements.txt
+
+      - name: Run Isort
+        if: steps.changed-files.outputs.all_py_changes  != ''
+        run: isort --check-only --diff ${{ steps.changed-files.outputs.all_py_changes }}
+
+      - name: Run Black
+        if: steps.changed-files.outputs.all_py_changes  != ''
+        run: black --check --diff --color ${{ steps.changed-files.outputs.all_py_changes }}
+
+      - name: Run Pylint
+        if: steps.changed-files.outputs.all_py_changes  != ''
+        run: pylint -j 1 ${{ steps.changed-files.outputs.all_py_changes }}
+        continue-on-error: true
