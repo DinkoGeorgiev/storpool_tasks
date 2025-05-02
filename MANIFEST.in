@@ -1,0 +1,37 @@
+# Project specific #
+####################
+include LICENSE
+include MANIFEST.in
+include pytest.ini
+include README.md
+include tox.ini
+include pyproject.toml
+
+
+# python stuff #
+################
+prune */__pycache__
+global-exclude __pycache__
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+
+# Backup files #
+################
+global-exclude *~
+global-exclude *.old
+global-exclude *.bak
+global-exclude *.new
+global-exclude *.orig
+global-exclude *.save
+
+# OS generated files #
+######################
+global-exclude .DS_Store*
+global-exclude ehthumbs.db
+global-exclude Icon?
+global-exclude Thumbs.db
+
+# Git exclude files #
+#####################
+global-exclude .gitignore
