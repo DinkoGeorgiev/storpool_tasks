@@ -1,16 +1,26 @@
 # storpool_tasks
-Results and solutions to 4 challenges provided by StorPool
+Results and solutions to 4 challenges provided by StorPool.
 
 
 ## 1. Counting
 
 ### Description
 
-TODO
+A python program that takes as input a binary file containing 32-bit integer numbers stored as uint32_t.
+The implementation aims to strike a balance between memory usage, speed and simplicity of implementation.
+
+For 1 billion items (file size is 4,000,000,000 bytes), the program takes about 3-4 minutes on laptop with average specs and uses around 1.5GB ram, 1GB of which are for the helper bitarrays.
+
+Current bottlenecks are the many bitarrays get/set method calls, along with python's inherent slower loops.
+
 
 ### Usage
 
-TODO
+`python storpool_tasks/counting/countreader.py -i input_file`
+
+There is a `-v` option to log some basic additional info. Please refer to the included usage information for more details.
+
+
 
 ## 2. Fizzbuzz
 
@@ -76,3 +86,19 @@ At https://quiz.storpool.com/binaries.tgz there’s an archive with two executab
 crash in different ways.
 
 Analysis of the two binaries can be found in `reverse_engineering/` directory.
+
+## Unit tests
+
+### Tox
+
+The recommended way to run the included python unit tests is through tox. The code has been tested with python 3.13 and 3.12.
+
+* In a virtual environment `pip install tox`
+* `tox`
+
+### pytest
+
+Alternatively, tests can be run directly with `pytest`
+
+* In a virtual environment `pip install pytest`
+* `pytest`
