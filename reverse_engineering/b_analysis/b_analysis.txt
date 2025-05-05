@@ -1,2 +1,3 @@
 1. When run ./b exits with segmentation fault. The initial strace does not reveal useful information for the analysis.
 2. Running ./b through valgrind reveals that the reason for the failure is invalid memory access, most probably due to null pointer reference, as hinted by the 0x0 address.
+3. TODO: Analyze assembly
