@@ -1,0 +1,35 @@
+gdb -batch ./b -ex 'run' -ex 'bt'
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400b67 in ?? ()
+#0  0x0000000000400b67 in ?? ()
+#1  0x0000000000400e63 in ?? ()
+#2  0x00000000004010ee in ?? ()
+#3  0x00000000004009ba in ?? ()
+
+
+# The program fails at 0x0000000000400b67
+
+  400b53:	48 8d 3d 4a 91 08 00 	lea    rdi,[rip+0x8914a]  #  The instruction before the call loads rdi with an address (0x489ca4), probably setting up something for the call.
+  400b5a:	e8 11 61 00 00       	call   0x406c70
+  400b5f:	48 89 45 f0          	mov    QWORD PTR [rbp-0x10],rax  # [rbp-0x10] is set by the return value of a function call at 0x406c70
+  400b63:	48 8b 45 f0          	mov    rax,QWORD PTR [rbp-0x10]  # rax is loaded from [rbp-0x10]:
+  400b67:	0f b6 00             	movzx  eax,BYTE PTR [rax]  # Read a byte from the memory address stored in rax. The crash happens because rax is null.
+
+
+gdb -batch ./b -ex "b *0x400b5a" -ex "r"  -ex 'x/s $rdi'
+Breakpoint 1 at 0x400b5a
+
+Breakpoint 1, 0x0000000000400b5a in ?? ()
+0x489ca4:	"TMPDIR"  # Looks like an environment variable.
+
+
+# Setting the environment variable fixes the crash.
+
+TMPDIR= ./b
+Init done 0 .
+Enter password: test
+
+WRONG
+
+# At this point the task starts to look like a puzzle.
