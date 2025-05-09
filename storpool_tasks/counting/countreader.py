@@ -1,4 +1,3 @@
-import array
 import logging
 import sys
 from argparse import ArgumentParser
@@ -15,8 +14,7 @@ def process_input(filename, seen_once, seen_multiple, chunk_size=4 * 1024 * 1024
             if not data:
                 break
 
-            numbers = array.array("I")
-            numbers.frombytes(data)
+            numbers = memoryview(data).cast("I")
 
             for num in numbers:
                 if not seen_once[num]:

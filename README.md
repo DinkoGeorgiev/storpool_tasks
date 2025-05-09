@@ -9,7 +9,7 @@ Results and solutions to 4 challenges provided by StorPool.
 A python program that takes as input a binary file containing 32-bit integer numbers stored as uint32_t.
 The implementation aims to strike a balance between memory usage, speed and simplicity of implementation.
 
-For 1 billion items (file size is 4,000,000,000 bytes), the program takes about 3-4 minutes on laptop with average specs and uses around 1.5GB ram, 1GB of which are for the helper bitarrays.
+For 1 billion items (file size is 4,000,000,000 bytes), the program takes about 1.5 minutes on laptop with average specs and uses around 1.5GB ram, 1GB of which are for the helper bitarrays.
 
 Current bottlenecks are the many bitarrays get/set method calls, along with python's inherent slower loops.
 
